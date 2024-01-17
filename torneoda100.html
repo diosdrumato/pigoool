@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRANDE TORNEO DA 100 DI PEGGLE</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Titan+One&display=swap">
+    <style>
+        body {
+            background-color: #000; /* Sfondo nero */
+            color: #fff; /* Testo bianco */
+            font-family: 'Titan One', sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 20px;
+            display: inline-block; /* Permette di applicare colori diversi a parti diverse del testo */
+            -webkit-text-stroke: 0.2px #444; /* Bordatura più scura */
+            color: transparent; /* Rende il testo trasparente per mostrare solo il bordo */
+            padding: 5px; /* Aggiunto spazio interno al bordo */
+        }
+
+        .blue-text {
+            color: #66f; /* Azzurro più chiaro */
+        }
+
+        .orange-text {
+            color: #f90; /* Arancio */
+        }
+		
+
+        #participants {
+            display: flex;
+            justify-content: center; /* Centra i partecipanti orizzontalmente */
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .participant {
+            border-radius: 8px;
+            padding: 10px;
+            margin: 0px; /* Ridotta la distanza tra i partecipanti */
+            text-align: center;
+            width: 100px;
+            -webkit-text-stroke: 0.2px #444; /* Bordatura più scura */
+            color: transparent; /* Rende il testo trasparente per mostrare solo il bordo */
+        }
+
+        .participant h2 {
+            margin-bottom: 5px; /* Aggiunge spazio tra il nome e il punteggio */
+            color: #fff; /* Nome in bianco senza bordo */
+        }
+
+        .participant span {
+            font-weight: bold;
+            display: block; /* Rende il punteggio su una nuova riga */
+            color: #fff; /* Punteggio in bianco senza bordo */
+            margin-bottom: 10px; /* Aggiunto spazio tra il punteggio e i pulsanti */
+        }
+
+        .participant button {
+            display: block; /* Rende i pulsanti su nuove righe */
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1><span class="blue-text">GRANDE TORNEO DA</span> <span class="orange-text">100 DI PEGGLE</span></h1>
+
+    <div id="participants">
+        <div class="participant" id="zano">
+            
+			<h2>Zano</h2>
+			<span id="score_zano">0</span>
+            <button onclick="updateScore('zano', 1)">+1</button>
+            <button onclick="updateScore('zano', 2)">+2</button>
+            <button onclick="updateScore('zano', 3)">+3</button>
+            <button onclick="updateScore('zano', 4)">+4</button>
+            <button onclick="updateScore('zano', 5)">+5</button>
+            <button onclick="manualInput('zano')">Manuale</button>
+        </div>
+
+        <div class="participant" id="blur">
+            <h2>Blur</h2>
+            <span id="score_blur">0</span>
+            <button onclick="updateScore('blur', 1)">+1</button>
+            <button onclick="updateScore('blur', 2)">+2</button>
+            <button onclick="updateScore('blur', 3)">+3</button>
+            <button onclick="updateScore('blur', 4)">+4</button>
+            <button onclick="updateScore('blur', 5)">+5</button>
+            <button onclick="manualInput('blur')">Manuale</button>
+        </div>
+
+        <div class="participant" id="marza">
+            <h2>Marza</h2>
+            <span id="score_marza">0</span>
+            <button onclick="updateScore('marza', 1)">+1</button>
+            <button onclick="updateScore('marza', 2)">+2</button>
+            <button onclick="updateScore('marza', 3)">+3</button>
+            <button onclick="updateScore('marza', 4)">+4</button>
+            <button onclick="updateScore('marza', 5)">+5</button>
+            <button onclick="manualInput('marza')">Manuale</button>
+        </div>
+
+        <div class="participant" id="fazzone">
+            <h2>Fazzone</h2>
+            <span id="score_fazzone">0</span>
+            <button onclick="updateScore('fazzone', 1)">+1</button>
+            <button onclick="updateScore('fazzone', 2)">+2</button>
+            <button onclick="updateScore('fazzone', 3)">+3</button>
+            <button onclick="updateScore('fazzone', 4)">+4</button>
+            <button onclick="updateScore('fazzone', 5)">+5</button>
+            <button onclick="manualInput('fazzone')">Manuale</button>
+        </div>
+    </div>
+
+    <script>
+        function updateScore(participant, value) {
+            // Aggiorna il punteggio del partecipante
+            var scoreElement = document.getElementById('score_' + participant);
+            var currentScore = parseInt(scoreElement.innerText);
+            scoreElement.innerText = currentScore + value;
+        }
+
+        function manualInput(participant) {
+            // Permetti all'utente di inserire manualmente il punteggio
+            var scoreElement = document.getElementById('score_' + participant);
+            var userInput = prompt('Inserisci il punteggio per ' + participant + ':');
+            var parsedInput = parseInt(userInput);
+            
+            if (!isNaN(parsedInput)) {
+                scoreElement.innerText = parsedInput;
+            } else {
+                alert('Inserisci un valore numerico valido.');
+            }
+        }
+    </script>
+
+</body>
+</html>
